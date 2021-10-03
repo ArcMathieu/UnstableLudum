@@ -11,18 +11,13 @@ public class MovementController : MonoBehaviour
     Vector3 direction;
 
     public int speed;
-    float currentSpeed;
-    public int maxSpeed;
     public float gap;
-
-    bool canMove;
 
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         StartPos = rb.position;
-        canMove = true;
     }
 
     // Update is called once per frame
