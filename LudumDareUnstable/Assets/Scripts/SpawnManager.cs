@@ -26,6 +26,7 @@ public class SpawnManager : MonoBehaviour
         Vector3 elementPosition = Vector3.Lerp(firstSpawnPoint.position, secondSpawnPoint.position, randomPosition);
         Element newElement = Instantiate(element, elementPosition, Quaternion.identity);
         newElement.bounds = destroyLimit;
+        newElement.speed *= fallSpeedModifier;
     }
 
     Element RandomElementChoosen() {

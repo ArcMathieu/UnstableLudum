@@ -342,11 +342,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spawnRate: 1
-  fallSpeedModifier: 0
+  fallSpeedModifier: 2
   elementArray:
-  - {fileID: 2290783295259586738, guid: d50fe9ecb0595af41937fe72f6c35c39, type: 3}
-  - {fileID: 3424384778959430073, guid: 36a0037fbfe55634cbd6d9219caa2671, type: 3}
-  - {fileID: 6098655102003516691, guid: bc94b0a8d57c53948906efe74acc34a7, type: 3}
+  - {fileID: 8472533944087696243, guid: 1e71dba9ade8bf54f87e79bf6aa5aa90, type: 3}
+  - {fileID: 8472533944087696243, guid: 5e72fa835494265478b7511b2f650d39, type: 3}
+  - {fileID: 7150699852631979738, guid: 1765d9da9c759bc418be6dfbb3733e3c, type: 3}
+  - {fileID: 8472533944087696243, guid: 2e59eb6b4a142e248813493d1f12ea0b, type: 3}
   firstSpawnPoint: {fileID: 429183102}
   secondSpawnPoint: {fileID: 1318786046}
   destroyLimit: {fileID: 1966820071}
