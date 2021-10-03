@@ -5,11 +5,12 @@ using UnityEngine;
 [RequireComponent(typeof(Rigidbody2D))]
 public abstract class Element : MonoBehaviour {
     public float fireStability = 1f;
+    public float speed = 1f;
     public Element opposite = null;
-    public float speed;
-    public Transform bounds;
 
-    protected string _name = "";
+    [HideInInspector] public Transform bounds = null;
+
+    [SerializeField] private string _name = "";
     private Rigidbody2D _rb = null;
 
     #region Properties
@@ -38,7 +39,13 @@ public abstract class Element : MonoBehaviour {
         Destroy(gameObject);
     }
 
+    public void Retrieve() {
+        OnRetrieve();
+        Delete();
+    }
+
     protected virtual void OnStart() { }
     protected virtual void OnUpdate() { }
     protected virtual void OnDelete() { }
+    protected virtual void OnRetrieve() { }
 }
