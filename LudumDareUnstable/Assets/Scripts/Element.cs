@@ -26,7 +26,7 @@ public abstract class Element : MonoBehaviour {
     }
 
     private void Update() {
-        if (transform.position.y < bounds.position.y) {
+        if (bounds != null && transform.position.y < bounds.position.y) {
             Delete();
         }
         OnUpdate();
