@@ -9,10 +9,10 @@ public class MovementController : MonoBehaviour
     Vector2 pos;
     Vector3 touchPosition;
     Vector3 direction;
-    float HztVelocity;
 
     public float speed;
     public float gap;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -23,11 +23,13 @@ public class MovementController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Input.touchCount > 0)
-        {
-            //HztVelocity = Input.GetAxisRaw("Horizontal");
-            //rb.velocity = new Vector2(HztVelocity * speed * Time.deltaTime, 0);
+        Moves();
+    }
 
+    public void Moves()
+    {
+        if (Input.touchCount > 0)
+        {
             pos = rb.position;
             pos.x = Mathf.Clamp(pos.x, StartPos.x - gap, StartPos.x + gap);
 
@@ -35,7 +37,7 @@ public class MovementController : MonoBehaviour
             touchPosition = Camera.main.ScreenToWorldPoint(touch.position);
             touchPosition.z = 0;
             direction = (touchPosition - transform.position).normalized;
-            
+
             rb.velocity = new Vector2(direction.x * speed * Time.deltaTime, 0);
             transform.position = pos;
 
