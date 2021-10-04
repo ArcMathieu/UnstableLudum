@@ -10,7 +10,7 @@ public class MovementController : MonoBehaviour
     Vector3 touchPosition;
     Vector3 direction;
 
-    public float speed;
+    public int speed;
     public float gap;
 
     // Start is called before the first frame update
@@ -30,13 +30,13 @@ public class MovementController : MonoBehaviour
     {
         if (Input.touchCount > 0)
         {
-            pos = rb.position;
+            pos = transform.position;
             pos.x = Mathf.Clamp(pos.x, StartPos.x - gap, StartPos.x + gap);
 
             Touch touch = Input.GetTouch(0);
             touchPosition = Camera.main.ScreenToWorldPoint(touch.position);
             touchPosition.z = 0;
-            direction = (touchPosition - transform.position).normalized;
+            direction = (touchPosition - transform.position);
 
             rb.velocity = new Vector2(direction.x * speed * Time.deltaTime, 0);
             transform.position = pos;
