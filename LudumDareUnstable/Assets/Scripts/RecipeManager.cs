@@ -8,12 +8,12 @@ public class RecipeManager : MonoBehaviour {
     List<Element> listElement = new List<Element>();
     public Image firstElementUI, secondElementUI;
     public bool delete;
+
     void Start() {
         NewPotion();
         Refresh();
     }
 
-    // Update is called once per frame
     void Update() {
         if (delete) {
             delete = false;
@@ -21,7 +21,7 @@ public class RecipeManager : MonoBehaviour {
         }
     }
 
-    void AddRandomElement(int number) {
+    void AddRandomElements(int number) {
         for (int i = 0; i < number; i++) {
             int randomRange = Random.Range(0, spawnManager.elementArray.Length);
             listElement.Add(spawnManager.elementArray[randomRange]);
@@ -29,7 +29,6 @@ public class RecipeManager : MonoBehaviour {
     }
 
     void Refresh() {
-
         firstElementUI.sprite = listElement[0].sprite.sprite;
         if (listElement.Count > 1) {
             secondElementUI.color = new Color(1, 1, 1, 1);
@@ -39,15 +38,24 @@ public class RecipeManager : MonoBehaviour {
         }
     }
 
-    void DeleteFirstElement() {
+    public bool FillFirstElement(Element element) {
+        if (element.Name == listElement[0].Name) {
+            DeleteFirstElement();
+            return true;
+        }
+        return false;
+    }
+
+    public void DeleteFirstElement() {
         listElement.RemoveAt(0);
         if (listElement.Count == 0) {
             NewPotion();
         }
         Refresh();
     }
-    void NewPotion() {
+
+    public void NewPotion() {
         int potionSize = Random.Range(7, 13);
-        AddRandomElement(potionSize);
+        AddRandomElements(potionSize);
     }
 }
