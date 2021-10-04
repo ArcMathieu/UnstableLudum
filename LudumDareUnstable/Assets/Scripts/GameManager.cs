@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour {
     public static GameManager _instance;
+    public Element[] elementArray = new Element[0];
 
     public UIManager ui;
 

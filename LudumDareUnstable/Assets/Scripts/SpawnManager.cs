@@ -7,14 +7,13 @@ public class SpawnManager : MonoBehaviour {
     float spawnTimer = 5; 
     public float spawnRate;
     public float fallSpeedModifier;
-    public Element[] elementArray = new Element[0];
     public Transform firstSpawnPoint;
     public Transform secondSpawnPoint;
     public Transform destroyLimit;
     Dictionary<Element, int> elementWeight = new Dictionary<Element, int>();
     private void Start() {
-        for (int i = 0; i < elementArray.Length; i++) {
-            elementWeight.Add(elementArray[i], 1);
+        for (int i = 0; i < GameManager._instance.elementArray.Length; i++) {
+            elementWeight.Add(GameManager._instance.elementArray[i], 1);
         }
     }
     private void Update() {
