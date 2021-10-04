@@ -31,7 +31,7 @@ public class RecipeManager : MonoBehaviour {
         }
     }
 
-    void Refresh() {
+    public void Refresh() {
         firstElementUI.sprite = listElementToGet[0].sprite.sprite;
         firstElementUI.color = listElementToGet[0].sprite.color;
         if (listElementToGet.Count > 1) {
