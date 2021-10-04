@@ -9,7 +9,8 @@ public class RecipeManager : MonoBehaviour {
     public List<Element> listElementBeenGet = new List<Element>();
     public int maxElementBeenGet;
     public List<Image> elementBeenGetUI = new List<Image>();
-    public Image firstElementUI, secondElementUI;
+    //public Image firstElementUI, secondElementUI;
+    public SpriteRenderer firstElementUI, secondElementUI;
     public bool delete;
 
     void Start() {
