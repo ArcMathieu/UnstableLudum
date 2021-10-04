@@ -4,17 +4,16 @@ using UnityEngine;
 using System.Linq;
 
 public class SpawnManager : MonoBehaviour {
-    float spawnTimer = 0;
+    float spawnTimer = 5; 
     public float spawnRate;
     public float fallSpeedModifier;
-    public Element[] elementArray = new Element[0];
     public Transform firstSpawnPoint;
     public Transform secondSpawnPoint;
     public Transform destroyLimit;
     Dictionary<Element, int> elementWeight = new Dictionary<Element, int>();
     private void Start() {
-        for (int i = 0; i < elementArray.Length; i++) {
-            elementWeight.Add(elementArray[i], 1);
+        for (int i = 0; i < GameManager._instance.elementArray.Length; i++) {
+            elementWeight.Add(GameManager._instance.elementArray[i], 1);
         }
     }
     private void Update() {
@@ -50,13 +49,11 @@ public class SpawnManager : MonoBehaviour {
     }
 
     void TimerBeforeSpawn() {
-        if (spawnTimer == 0) {
-            spawnTimer = spawnRate;
-        }
+       
         spawnTimer -= Time.deltaTime;
         if (spawnTimer <= 0) {
-            spawnTimer = 0;
             SpawnBetweenTwoPoints(RandomElementChoosen());
+            spawnTimer = spawnRate;
         }
     }
 
