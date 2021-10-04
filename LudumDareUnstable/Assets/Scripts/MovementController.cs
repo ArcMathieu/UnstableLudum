@@ -27,10 +27,10 @@ public class MovementController : MonoBehaviour
 
     public void Moves()
     {
+        pos = rb.position;
 
         if (Input.touchCount > 0)
         {
-            pos = rb.position;
 
             Touch touch = Input.GetTouch(0);
             touchPosition = Camera.main.ScreenToWorldPoint(touch.position);
@@ -53,8 +53,30 @@ public class MovementController : MonoBehaviour
                     break;
             }
 
-            rb.position = pos;
+        }
+        else
+        {
+            Vector2 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+                RaycastHit2D hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(Input.mousePosition), Vector2.zero);
+            if (Input.GetMouseButtonDown(0))
+            {
+                if (hit.collider == GetComponent<Collider2D>()) moveAllowed = true;
+            }
+            if (Input.GetMouseButton(0) && moveAllowed)
+            {
+                if (moveAllowed) pos.x = Mathf.Clamp(mousePosition.x, StartPos.x - gap, StartPos.x + gap);
+                else pos.x = Mathf.Clamp(pos.x, StartPos.x - gap, StartPos.x + gap);
+            }
+            if (Input.GetMouseButtonUp(0))
+            {
+                moveAllowed = false;
+                rb.velocity = Vector2.zero;
+            }
 
         }
+
+
+        rb.position = pos;
+
     }
 }
