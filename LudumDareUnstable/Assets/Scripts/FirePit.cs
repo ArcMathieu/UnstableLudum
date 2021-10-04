@@ -54,6 +54,5 @@ public class FirePit : MonoBehaviour
     {
         firePanel.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, fireLevel * 3f);
         firePanel.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, fireLevel * 2.5f);
-        Debug.Log(fireLevel);
     }
 }

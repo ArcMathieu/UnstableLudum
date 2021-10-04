@@ -26,6 +26,9 @@ public class GameManager : MonoBehaviour {
 
     private void Start() {
         ui.DefeatScreenToggle(false);
+        SoundManager.PlayMusic(SoundManager.Sound.BackgroundMusic);
+        SoundManager.PlayLoopSound(SoundManager.Sound.Fire);
+        SoundManager.PlayLoopSound(SoundManager.Sound.Cauldron);
     }
 
     #region Blink
