@@ -23,6 +23,10 @@ public class GameManager : MonoBehaviour {
         }
     }
 
+    private void Start() {
+        ui.DefeatScreenToggle(false);
+    }
+
     #region Blink
 
     public void StartBlink(float time, float numberOfBlinks) {
