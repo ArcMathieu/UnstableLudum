@@ -12,13 +12,11 @@ public class FirePit : MonoBehaviour
     public float fireTimer;
     public Transform spiderParent;
     private float timer;
-    private RectTransform firePanel;
     public SpriteRenderer pentagramSprite = null;
     private Animator animator;
 
     private void Start()
     {
-        firePanel = GameManager._instance.firePanel.GetComponent<RectTransform>();
         animator = GetComponent<Animator>();
     }
 
@@ -30,7 +28,6 @@ public class FirePit : MonoBehaviour
             timer = fireTimer;
             if (fireLevel >= 0 && fireLevel <= 100) {
                 AddFire(-fireLost);
-                UpdateFireLevelUI();
             }
         }
 
@@ -72,11 +69,5 @@ public class FirePit : MonoBehaviour
         if (fireAdded > 0) {
             animator.SetTrigger("Blow");
         }
-    }
-
-    public void UpdateFireLevelUI()
-    {
-        firePanel.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, fireLevel * 3f);
-        firePanel.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, fireLevel * 2.5f);
     }
 }
