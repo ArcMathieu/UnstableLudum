@@ -14,6 +14,7 @@ public class GameManager : MonoBehaviour {
 
     public bool running;
     public int waitTime;
+    public Score score;
 
     public SpriteRenderer cauldronSortingLayer;
 
@@ -31,6 +32,7 @@ public class GameManager : MonoBehaviour {
         SoundManager.PlayMusic(SoundManager.Sound.BackgroundMusic);
         SoundManager.PlayLoopSound(SoundManager.Sound.Fire);
         SoundManager.PlayLoopSound(SoundManager.Sound.Cauldron);
+        GameManager._instance.score.score = 0;
     }
 
     #region Blink

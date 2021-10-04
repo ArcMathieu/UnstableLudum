@@ -16,9 +16,11 @@ public class RecipeManager : MonoBehaviour {
     void Start() {
         NewPotion();
         Refresh();
+        GameManager._instance.score.score = 0;
     }
 
     void Update() {
+        GameManager._instance.score.AddScore(1);
         if (delete) {
             delete = false;
             DeleteFirstElement();
@@ -67,12 +69,17 @@ public class RecipeManager : MonoBehaviour {
             NewPotion();
         }
         Refresh();
+        GameManager._instance.score.AddScore(1000);
     }
 
     public void NewPotion() {
         int potionSize = Random.Range(7, 13);
         AddRandomElements(potionSize);
         listElementBeenGet.Clear();
+        if (GameManager._instance.score.score != 0) {
+
+        GameManager._instance.score.AddScore(10000);
+        }
     }
     public void AddElementBeenGet(Element element) {
         listElementBeenGet.Add(element);
