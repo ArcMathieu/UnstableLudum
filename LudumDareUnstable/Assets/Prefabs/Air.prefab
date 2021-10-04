@@ -52,6 +52,7 @@ MonoBehaviour:
   sprite: {fileID: 3056898986846696005}
   bounds: {fileID: 0}
   _name: Air
+  timeToDrop: 1.5
 --- !u!212 &3056898986846696005
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -91,7 +92,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: 481be6e7179300646971d8033b5a5249, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
