@@ -4,8 +4,11 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class RecipeManager : MonoBehaviour {
-    public SpawnManager spawnManager;
-    List<Element> listElement = new List<Element>();
+    [SerializeField]
+    List<Element> listElementToGet = new List<Element>();
+    public List<Element> listElementBeenGet = new List<Element>();
+    public int maxElementBeenGet;
+    public List<Image> elementBeenGetUI = new List<Image>();
     public Image firstElementUI, secondElementUI;
     public bool delete;
 
@@ -23,23 +26,33 @@ public class RecipeManager : MonoBehaviour {
 
     void AddRandomElements(int number) {
         for (int i = 0; i < number; i++) {
-            int randomRange = Random.Range(0, spawnManager.elementArray.Length);
-            listElement.Add(spawnManager.elementArray[randomRange]);
+            int randomRange = Random.Range(0, GameManager._instance.elementArray.Length);
+            listElementToGet.Add(GameManager._instance.elementArray[randomRange]);
         }
     }
 
     void Refresh() {
-        firstElementUI.sprite = listElement[0].sprite.sprite;
-        if (listElement.Count > 1) {
-            secondElementUI.color = new Color(1, 1, 1, 1);
-            secondElementUI.sprite = listElement[1].sprite.sprite;
+        firstElementUI.sprite = listElementToGet[0].sprite.sprite;
+        firstElementUI.color = listElementToGet[0].sprite.color;
+        if (listElementToGet.Count > 1) {
+            secondElementUI.color = listElementToGet[1].sprite.color;
+            secondElementUI.sprite = listElementToGet[1].sprite.sprite;
         } else {
-            secondElementUI.color = new Color(0,0,0,0);
+            secondElementUI.color = new Color(0, 0, 0, 0);
+        }
+
+        for (int i = 0; i < maxElementBeenGet; i++) {
+            if (i < listElementBeenGet.Count) {
+                elementBeenGetUI[i].color = listElementBeenGet[i].sprite.color;
+                elementBeenGetUI[i].sprite = listElementBeenGet[i].sprite.sprite;
+            } else {
+                elementBeenGetUI[i].color = new Color(0, 0, 0, 0);
+            }
         }
     }
 
     public bool FillFirstElement(Element element) {
-        if (element.Name == listElement[0].Name) {
+        if (element.Name == listElementToGet[0].Name) {
             DeleteFirstElement();
             return true;
         }
@@ -47,8 +60,9 @@ public class RecipeManager : MonoBehaviour {
     }
 
     public void DeleteFirstElement() {
-        listElement.RemoveAt(0);
-        if (listElement.Count == 0) {
+        AddElementBeenGet(listElementToGet[0]);
+        listElementToGet.RemoveAt(0);
+        if (listElementToGet.Count == 0) {
             NewPotion();
         }
         Refresh();
@@ -57,5 +71,13 @@ public class RecipeManager : MonoBehaviour {
     public void NewPotion() {
         int potionSize = Random.Range(7, 13);
         AddRandomElements(potionSize);
+        listElementBeenGet.Clear();
+    }
+    public void AddElementBeenGet(Element element) {
+        listElementBeenGet.Add(element);
+        Debug.Log("been add" + element);
+        if (listElementBeenGet.Count > maxElementBeenGet)
+            listElementBeenGet.RemoveAt(0);
+        Refresh();
     }
 }

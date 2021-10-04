@@ -14,7 +14,7 @@ public class Cauldron : MonoBehaviour {
         }
     }
 
-    public RecipeManager recipe;
+    public RecipeManager recipeManager;
     public float errorTime = 5f;
     public int maxErrors = 2;
 
@@ -25,17 +25,17 @@ public class Cauldron : MonoBehaviour {
     }
 
     private void Retrieve(Element element) {
+
         element.Retrieve();
         for (int i = 0; i < wrongElements.Count; i++) {
             if (wrongElements[i].element.opposite.Name == element.Name) {
+                recipeManager.listElementBeenGet.Remove(wrongElements[i].element);
                 CorrectWrongElement(i);
                 return;
             }
         }
 
-        if (recipe.FillFirstElement(element)) {
-            // Oui
-        } else {
+        if (!recipeManager.FillFirstElement(element)) {
             if (wrongElements.Count + 1 > maxErrors) {
                 GameManager._instance.Lose();
                 return;
@@ -46,6 +46,7 @@ public class Cauldron : MonoBehaviour {
 
     private void AddWrongElement(Element element) {
         wrongElements.Add(new WrongElement(element, StartCoroutine(IWrongElementTimer(errorTime))));
+        recipeManager.AddElementBeenGet(element);
     }
 
     private void CorrectWrongElement(int index) {
