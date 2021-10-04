@@ -10,7 +10,6 @@ public class FirePit : MonoBehaviour
     public float fireTimer;
     private float timer;
     private RectTransform firePanel;
-    public Text fireLevelText;
 
     private void Start()
     {
@@ -53,14 +52,8 @@ public class FirePit : MonoBehaviour
 
     public void UpdateFireLevelUI()
     {
-        firePanel.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, fireLevel * 3);
+        firePanel.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, fireLevel * 3f);
         firePanel.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, fireLevel * 2.5f);
-        FireLevelTextUI();
-    }
-
-    public void FireLevelTextUI()
-    {
-        fireLevelText.text = fireLevel.ToString();
-        fireLevelText.color = new Color(fireLevel * 0.0255f, fireLevelText.color.g, fireLevelText.color.b);
+        Debug.Log(fireLevel);
     }
 }
