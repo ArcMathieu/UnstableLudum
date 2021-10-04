@@ -4,7 +4,7 @@ using UnityEngine;
 using System.Linq;
 
 public class SpawnManager : MonoBehaviour {
-    float spawnTimer = 0;
+    float spawnTimer = 5; 
     public float spawnRate;
     public float fallSpeedModifier;
     public Element[] elementArray = new Element[0];
@@ -50,13 +50,11 @@ public class SpawnManager : MonoBehaviour {
     }
 
     void TimerBeforeSpawn() {
-        if (spawnTimer == 0) {
-            spawnTimer = spawnRate;
-        }
+       
         spawnTimer -= Time.deltaTime;
         if (spawnTimer <= 0) {
-            spawnTimer = 0;
             SpawnBetweenTwoPoints(RandomElementChoosen());
+            spawnTimer = spawnRate;
         }
     }
 

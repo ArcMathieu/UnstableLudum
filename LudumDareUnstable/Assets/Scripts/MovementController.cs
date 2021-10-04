@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class MovementController : MonoBehaviour
 {
-    Rigidbody2D rb;
     Vector2 StartPos;
     Vector2 pos;
     Vector3 touchPosition;
@@ -15,8 +14,7 @@ public class MovementController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        rb = GetComponent<Rigidbody2D>();
-        StartPos = rb.position;
+        StartPos = transform.position;
     }
 
     // Update is called once per frame
@@ -27,7 +25,7 @@ public class MovementController : MonoBehaviour
 
     public void Moves()
     {
-        pos = rb.position;
+        pos = transform.position;
 
         if (Input.touchCount > 0)
         {
@@ -47,7 +45,6 @@ public class MovementController : MonoBehaviour
                     break;
                 case TouchPhase.Ended:
                     moveAllowed = false;
-                    rb.velocity = Vector2.zero;
                     break;
                 default:
                     break;
@@ -70,13 +67,12 @@ public class MovementController : MonoBehaviour
             if (Input.GetMouseButtonUp(0))
             {
                 moveAllowed = false;
-                rb.velocity = Vector2.zero;
             }
 
         }
 
 
-        rb.position = pos;
+        transform.position = pos;
 
     }
 }

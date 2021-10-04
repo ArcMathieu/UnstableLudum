@@ -9,6 +9,9 @@ public class GameManager : MonoBehaviour
     public GameObject lightPanel;
     public Coroutine blink;
 
+    public bool running;
+    public int waitTime;
+
     public void StartBlink(float time, float numberOfBlinks)
     {
         if (blink != null)
@@ -44,6 +47,7 @@ public class GameManager : MonoBehaviour
             Destroy(this.gameObject);
         }
     }
+
 
     public void Lose()
     {
