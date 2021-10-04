@@ -15,7 +15,7 @@ public abstract class Element : MonoBehaviour {
     private Rigidbody2D _rb = null;
 
     #region Properties
-    string Name {
+    public string Name {
         get { return _name; } set { _name = value; }
     }
     #endregion
@@ -42,7 +42,8 @@ public abstract class Element : MonoBehaviour {
 
     public void Retrieve() {
         OnRetrieve();
-        Delete();
+        _rb.velocity = Vector2.zero;
+        gameObject.SetActive(false);
     }
 
     public void ChangeSpeed(float speed) {
