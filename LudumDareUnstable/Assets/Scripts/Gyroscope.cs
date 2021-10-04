@@ -23,7 +23,6 @@ public class Gyroscope : MonoBehaviour
     void Start()
     {
         StartRot = transform.localEulerAngles.z;
-        Debug.Log("hrhr" + StartRot);
         antRotZ = StartRot;
         currentState = State.flat;
     }
@@ -64,26 +63,15 @@ public class Gyroscope : MonoBehaviour
     }
     public void MoveToSloping(float acceleration)
     {
-        Debug.Log("juju" + rotAccelerate);
-
         if (acceleration >= -0.1 && acceleration <= 0.1)
         {
             currentState = State.flat;
         }
         else
         {
-
             angle = Mathf.Clamp(Mathf.Lerp(rotZ, rotAccelerate, rDamping * Time.deltaTime), StartRot - maxAngle, StartRot + maxAngle);
             rot = new Vector3(0, 0, angle);
             transform.localEulerAngles = rot;
         }
-    }
-    private float AcuteAngle(float angle)
-    {
-        if (angle < 0)
-        {
-            return angle + 360;
-        }
-        return angle;
     }
 }
