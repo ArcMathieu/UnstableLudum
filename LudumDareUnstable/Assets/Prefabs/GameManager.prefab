@@ -781,8 +781,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1709622114413488855}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 3.0445602, y: -0.20373845, z: 6.8454103}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1709622114972550528}
@@ -801,7 +801,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ec2db2c7091c215449bc11a9914a3478, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameManager: {fileID: 1709622114620812063}
   listElementToGet: []
   listElementBeenGet: []
   maxElementBeenGet: 5
@@ -872,10 +871,13 @@ MonoBehaviour:
   - {fileID: 8472533944087696243, guid: 5f3cee323fcf2664399099a7410a48af, type: 3}
   - {fileID: 8472533944087696243, guid: 50ed063d4a985614e8e8eec9b9d94d05, type: 3}
   - {fileID: 8472533944087696243, guid: 152323089cc250046b16ba24d3d866d2, type: 3}
-  - {fileID: 8472533944087696243, guid: d45d5c77166750446bbce66dd3805eb8, type: 3}
   - {fileID: 8472533944087696243, guid: c01b5cae399e67c42b446e0713e9da52, type: 3}
   - {fileID: 8472533944087696243, guid: 386e319d739b901428617b44f53dc2ec, type: 3}
-  lightPanel: {fileID: 1709622113741557146}
+  ui: {fileID: 0}
+  firePanel: {fileID: 0}
+  lightPanel: {fileID: 0}
+  running: 0
+  waitTime: 0
 --- !u!1 &1709622114626394746
 GameObject:
   m_ObjectHideFlags: 0
@@ -1512,7 +1514,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4dadd3a359945b54d9a3dcf79478e0f7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameManager: {fileID: 1709622114620812063}
   spawnRate: 0.5
   fallSpeedModifier: 4
   firstSpawnPoint: {fileID: 1801084034305427882}

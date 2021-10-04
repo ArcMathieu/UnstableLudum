@@ -15,8 +15,10 @@ public class Cauldron : MonoBehaviour {
     }
     public Transform teleportation;
     public RecipeManager recipeManager;
+    public Animator animator;
     public float errorTime = 5f;
     public int maxErrors = 2;
+    public Animator handAnimator = null;
 
     private List<WrongElement> wrongElements;
 
@@ -25,6 +27,7 @@ public class Cauldron : MonoBehaviour {
     }
 
     private void Retrieve(Element element) {
+        animator.SetTrigger("CloseHand");
         for (int i = 0; i < wrongElements.Count; i++) {
             if (wrongElements[i].element.opposite.Name == element.Name) {
                 recipeManager.listElementBeenGet.Remove(wrongElements[i].element);
@@ -63,6 +66,9 @@ public class Cauldron : MonoBehaviour {
         Element element = collision.GetComponent<Element>();
         if (element != null) {
             element.gameObject.transform.position = teleportation.position;
+            element.GetComponent<SpriteRenderer>().sortingLayerID = GameManager._instance.cauldronSortingLayer.sortingLayerID;
+            SoundManager.PlaySound(SoundManager.Sound.TeleportationHandNotEndermanAtAll);
+            handAnimator.SetTrigger("Close");
             Retrieve(element);
         }
     }

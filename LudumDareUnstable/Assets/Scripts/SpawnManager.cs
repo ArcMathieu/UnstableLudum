@@ -22,7 +22,7 @@ public class SpawnManager : MonoBehaviour {
     void SpawnBetweenTwoPoints(Element element) {
         float randomPosition = Random.Range(0f, 1f);
         Vector3 elementPosition = Vector3.Lerp(firstSpawnPoint.position, secondSpawnPoint.position, randomPosition);
-        if (!Physics2D.OverlapBox(elementPosition, element.GetComponent<BoxCollider2D>().size, 0f)){
+        if (!Physics2D.OverlapCircle(elementPosition, element.GetComponent<CircleCollider2D>().radius * 1.5f)){
             Element newElement = Instantiate(element, elementPosition, Quaternion.identity);
             newElement.bounds = destroyLimit;
             newElement.speed *= fallSpeedModifier;

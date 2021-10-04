@@ -15,6 +15,8 @@ public class GameManager : MonoBehaviour {
     public bool running;
     public int waitTime;
 
+    public SpriteRenderer cauldronSortingLayer;
+
     private void Awake() {
         if (GameManager._instance == null) {
             _instance = this;
@@ -59,7 +61,7 @@ public class GameManager : MonoBehaviour {
     }
 
     public void Lose() {
-        Time.timeScale = 0f;
+        //Time.timeScale = 0f;
         ui.DefeatScreenToggle(false);
     }
 }
