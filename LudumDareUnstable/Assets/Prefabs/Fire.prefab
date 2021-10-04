@@ -70,6 +70,7 @@ MonoBehaviour:
   fireStability: 1
   speed: 1
   opposite: {fileID: 8472533944087696243, guid: 2e59eb6b4a142e248813493d1f12ea0b, type: 3}
+  sprite: {fileID: 2171581892316993447}
   bounds: {fileID: 0}
   _name: Fire
 --- !u!212 &2171581892316993447

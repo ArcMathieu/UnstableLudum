@@ -70,6 +70,7 @@ MonoBehaviour:
   fireStability: 1
   speed: 1
   opposite: {fileID: 8472533944087696243, guid: 5e72fa835494265478b7511b2f650d39, type: 3}
+  sprite: {fileID: 3056898986846696005}
   bounds: {fileID: 0}
   _name: Air
 --- !u!212 &3056898986846696005

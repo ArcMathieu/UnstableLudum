@@ -70,6 +70,7 @@ MonoBehaviour:
   fireStability: 1
   speed: 1
   opposite: {fileID: 7150699852631979738, guid: 1765d9da9c759bc418be6dfbb3733e3c, type: 3}
+  sprite: {fileID: -7375473927629121899}
   bounds: {fileID: 0}
   _name: Water
 --- !u!212 &-7375473927629121899

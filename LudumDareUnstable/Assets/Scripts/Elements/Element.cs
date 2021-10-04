@@ -7,6 +7,7 @@ public abstract class Element : MonoBehaviour {
     public float fireStability = 1f;
     public float speed = 1f;
     public Element opposite = null;
+    public SpriteRenderer sprite;
 
     [HideInInspector] public Transform bounds = null;
 

@@ -70,6 +70,7 @@ MonoBehaviour:
   fireStability: 1
   speed: 1
   opposite: {fileID: 8472533944087696243, guid: 1e71dba9ade8bf54f87e79bf6aa5aa90, type: 3}
+  sprite: {fileID: -3259083899422533201}
   bounds: {fileID: 0}
   _name: Dirt
 --- !u!212 &-3259083899422533201
