@@ -18,11 +18,11 @@ public class pauseMenu : MonoBehaviour
 
     public void Retry()
     {
-        //SceneManager.LoadScene(1);
+        SceneManager.LoadScene(1);
     }
 
     public void Quit()
     {
-        //SceneManager.LoadScene(0);
+        SceneManager.LoadScene(0);
     }
 }
