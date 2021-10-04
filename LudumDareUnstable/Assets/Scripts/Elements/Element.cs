@@ -45,6 +45,10 @@ public abstract class Element : MonoBehaviour {
         Delete();
     }
 
+    public void ChangeSpeed(float speed) {
+        _rb.velocity = new Vector2(0f, -speed);
+    }
+
     protected virtual void OnStart() { }
     protected virtual void OnUpdate() { }
     protected virtual void OnDelete() { }
