@@ -3,8 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
 
-public class SpawnManager : MonoBehaviour
-{
+public class SpawnManager : MonoBehaviour {
     float spawnTimer = 0;
     public float spawnRate;
     public float fallSpeedModifier;
@@ -19,14 +18,16 @@ public class SpawnManager : MonoBehaviour
         }
     }
     private void Update() {
-        TimerBeforeSpawn();    
+        TimerBeforeSpawn();
     }
     void SpawnBetweenTwoPoints(Element element) {
-        float randomPosition = Random.Range(0, 1000)/1000f;
+        float randomPosition = Random.Range(0f, 1f);
         Vector3 elementPosition = Vector3.Lerp(firstSpawnPoint.position, secondSpawnPoint.position, randomPosition);
-        Element newElement = Instantiate(element, elementPosition, Quaternion.identity);
-        newElement.bounds = destroyLimit;
-        newElement.speed *= fallSpeedModifier;
+        if (!Physics2D.OverlapBox(elementPosition, element.GetComponent<BoxCollider2D>().size, 0f)){
+            Element newElement = Instantiate(element, elementPosition, Quaternion.identity);
+            newElement.bounds = destroyLimit;
+            newElement.speed *= fallSpeedModifier;
+        }
     }
 
     Element RandomElementChoosen() {
