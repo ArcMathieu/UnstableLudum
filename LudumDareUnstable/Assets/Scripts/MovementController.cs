@@ -54,7 +54,7 @@ public class MovementController : MonoBehaviour
         else
         {
             Vector2 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-                RaycastHit2D hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(Input.mousePosition), Vector2.zero);
+            RaycastHit2D hit = Physics2D.Raycast(mousePosition, Vector2.zero);
             if (Input.GetMouseButtonDown(0))
             {
                 if (hit.collider == GetComponent<Collider2D>()) moveAllowed = true;

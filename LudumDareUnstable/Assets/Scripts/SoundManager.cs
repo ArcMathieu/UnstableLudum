@@ -10,7 +10,8 @@ public static class SoundManager
         Fire,
         Cauldron,
         ItemFallingInCauldron,
-        SatanicHand
+        SatanicHand,
+        TeleportationHandNotEndermanAtAll
     }
 
     private static Dictionary<Sound, float> soundTimerDictionary;
