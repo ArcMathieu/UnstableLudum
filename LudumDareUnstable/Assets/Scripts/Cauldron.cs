@@ -13,7 +13,7 @@ public class Cauldron : MonoBehaviour {
             routine = _routine;
         }
     }
-
+    public Transform teleportation;
     public RecipeManager recipeManager;
     public float errorTime = 5f;
     public int maxErrors = 2;
@@ -25,11 +25,10 @@ public class Cauldron : MonoBehaviour {
     }
 
     private void Retrieve(Element element) {
-
-        element.Retrieve();
         for (int i = 0; i < wrongElements.Count; i++) {
             if (wrongElements[i].element.opposite.Name == element.Name) {
                 recipeManager.listElementBeenGet.Remove(wrongElements[i].element);
+                recipeManager.Refresh();
                 CorrectWrongElement(i);
                 return;
             }
@@ -63,6 +62,7 @@ public class Cauldron : MonoBehaviour {
     private void OnTriggerEnter2D(Collider2D collision) {
         Element element = collision.GetComponent<Element>();
         if (element != null) {
+            element.gameObject.transform.position = teleportation.position;
             Retrieve(element);
         }
     }
