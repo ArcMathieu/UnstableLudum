@@ -43,6 +43,7 @@ public class FirePit : MonoBehaviour
                 if (hit.collider == GetComponent<Collider2D>()) AddFire(fireToAdd);
             }
         }
+        CheckLosing();
     }
 
     public void CheckLosing()

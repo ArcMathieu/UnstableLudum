@@ -17,6 +17,7 @@ public class GameManager : MonoBehaviour {
     public Score score;
 
     public SpriteRenderer cauldronSortingLayer;
+    public pauseMenu pause;
 
     private void Awake() {
         if (GameManager._instance == null) {
@@ -29,6 +30,7 @@ public class GameManager : MonoBehaviour {
 
     private void Start() {
         ui.DefeatScreenToggle(false);
+        Time.timeScale = 1f;
         SoundManager.PlayMusic(SoundManager.Sound.BackgroundMusic);
         SoundManager.PlayLoopSound(SoundManager.Sound.Fire);
         SoundManager.PlayLoopSound(SoundManager.Sound.Cauldron);
@@ -58,12 +60,12 @@ public class GameManager : MonoBehaviour {
     #endregion
 
     public void Restart() {
-        Time.timeScale = 1f;
+        pause.PauseOFF();
         ui.DefeatScreenToggle(false);
     }
 
     public void Lose() {
-        //Time.timeScale = 0f;
-        ui.DefeatScreenToggle(false);
+        pause.PauseON();
+        ui.DefeatScreenToggle(true);
     }
 }

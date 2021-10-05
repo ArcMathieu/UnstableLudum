@@ -12,15 +12,23 @@ public class RecipeManager : MonoBehaviour {
     //public Image firstElementUI, secondElementUI;
     public SpriteRenderer firstElementUI, secondElementUI;
     public bool delete;
+    public float maxTimer;
+    private float timerToScore;
 
     void Start() {
         NewPotion();
         Refresh();
         GameManager._instance.score.score = 0;
+        timerToScore = maxTimer;
     }
 
     void Update() {
-        GameManager._instance.score.AddScore(1);
+        timerToScore -= Time.deltaTime;
+        if (timerToScore <= 0)
+        {
+            GameManager._instance.score.AddScore(1);
+            timerToScore = maxTimer;
+        }
         if (delete) {
             delete = false;
             DeleteFirstElement();
@@ -78,7 +86,7 @@ public class RecipeManager : MonoBehaviour {
         listElementBeenGet.Clear();
         if (GameManager._instance.score.score != 0) {
 
-        GameManager._instance.score.AddScore(10000);
+            GameManager._instance.score.AddScore(10000);
         }
     }
     public void AddElementBeenGet(Element element) {
